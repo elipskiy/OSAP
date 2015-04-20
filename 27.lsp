@@ -50,7 +50,9 @@
 
   (cond
     ; Start point, end point, angle
-    (= part "Duga" (command "arc" (setq startPoint (getpoint)) "E" (duga) "A" angle))
+    ((= part "Duga") (command "arc" (setq startPoint (getpoint)) "E" (duga) "A" angle))
+    ; Start point, end point, distance
+    ((= part "Ellipse") (command "ellipse" (setq startPoint (getpoint)) (ellipse) distance))
   )
 
   (close f)
@@ -59,6 +61,13 @@
 (defun duga()
   (setq relPoint (list (atof (read-line f)) (atof (read-line f))))
   (setq angle (read-line f))
+
+  (mapcar '+ startPoint relPoint)
+)
+
+(defun ellipse()
+  (setq relPoint (list (atof (read-line f)) (atof (read-line f))))
+  (setq distance (read-line f))
 
   (mapcar '+ startPoint relPoint)
 )
