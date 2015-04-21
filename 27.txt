@@ -38,5 +38,8 @@ konus
 70
 80
 
+shar
+77
+
 end
 

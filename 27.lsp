@@ -68,7 +68,7 @@
     ((= part "Duga") (command "arc" (setq startPoint (getpoint)) "E" (duga) "A" angle))
     ; Start point, end point, distance
     ((= part "Ellipse") (command "ellipse" (setq startPoint (getpoint)) (ellipse) distance))
-    ;
+    ; Start point, ...points
     ((= part "Poliliniya") (command "pline" (setq startPoint (getpoint)) (poliliniya)))
     ; Start point, radius
     ((= part "PYatiugol'nik") (command "polygon" 5 (getpoint) "I" (pyatiugolnik)))
@@ -140,6 +140,11 @@
       (konus)
       (command "cone" (getpoint) radius height))
     )
+    ; Center point, radius
+    ((= part "Shar") (progn
+      (shar)
+      (command "sphere" (getpoint) radius))
+    )
   )
 
   (close f)
@@ -160,4 +165,8 @@
 (defun konus()
   (setq radius (read-line f))
   (setq height (read-line f))
+)
+
+(defun shar()
+  (setq radius (read-line f))
 )
