@@ -70,6 +70,8 @@
     ((= part "Ellipse") (command "ellipse" (setq startPoint (getpoint)) (ellipse) distance))
     ;
     ((= part "Poliliniya") (command "pline" (setq startPoint (getpoint)) (poliliniya)))
+    ; Start point, radius
+    ((= part "PYatiugol'nik") (command "polygon" 5 (getpoint) "I" (pyatiugolnik)))
   )
 
   (close f)
@@ -103,6 +105,12 @@
     (setq prevPoint newPoint)
   )
   (command "")
+)
+
+(defun pyatiugolnik()
+  (setq radius nil)
+
+  (setq radius (read-line f))
 )
 
 (defun 3dPart()

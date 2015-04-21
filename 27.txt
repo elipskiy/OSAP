@@ -22,5 +22,9 @@ poliliniya
 -6
 -4
 
+
+pyatiugol'nik
+18
+
 end
 
