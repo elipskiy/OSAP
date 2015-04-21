@@ -69,7 +69,7 @@
     ; Start point, end point, distance
     ((= part "Ellipse") (command "ellipse" (setq startPoint (getpoint)) (ellipse) distance))
     ;
-    ; ((= part "Poliliniya") (command "pline" (setq startPoint (getpoint)) (poliliniya)))
+    ((= part "Poliliniya") (command "pline" (setq startPoint (getpoint)) (poliliniya)))
   )
 
   (close f)
@@ -90,9 +90,20 @@
   (mapcar '+ startPoint relPoint)
 )
 
-; (defun poliliniya()
+; polyline attached to other points
+(defun poliliniya()
+  (setq lX nil lY nil prevPoint startPoint)
 
-; )
+  (while (and (and (/= lX "") (/= lX "end")) (and (/= lY "") (/= lY "end")))
+    (setq lX (read-line f) lY (read-line f))
+    (setq relPoint (list (atof lX) (atof lY)))
+    (setq newPoint (mapcar '+ prevPoint relPoint))
+
+    (command newPoint)
+    (setq prevPoint newPoint)
+  )
+  (command "")
+)
 
 (defun 3dPart()
   (setq part nil)

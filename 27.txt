@@ -12,3 +12,15 @@ ellipse
 13
 3
 
+poliliniya
+10
+13
+2
+9
+-2
+4
+-6
+-4
+
+end
+
