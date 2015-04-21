@@ -130,6 +130,11 @@
       (tor)
       (command "torus" (getpoint) radius tubeRadius))
     )
+    ; Start point, length, width, height
+    ((= part "Prisma") (progn
+      (prisma)
+      (command "wedge" (getpoint) "L" length width height))
+    )
   )
 
   (close f)
@@ -139,4 +144,10 @@
 (defun tor()
   (setq radius (read-line f))
   (setq tubeRadius (read-line f))
+)
+
+(defun prisma()
+  (setq length (read-line f))
+  (setq width (read-line f))
+  (setq height (read-line f))
 )
