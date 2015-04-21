@@ -135,6 +135,11 @@
       (prisma)
       (command "wedge" (getpoint) "L" length width height))
     )
+    ; Center point, radius, height
+    ((= part "Konus") (progn
+      (konus)
+      (command "cone" (getpoint) radius height))
+    )
   )
 
   (close f)
@@ -149,5 +154,10 @@
 (defun prisma()
   (setq length (read-line f))
   (setq width (read-line f))
+  (setq height (read-line f))
+)
+
+(defun konus()
+  (setq radius (read-line f))
   (setq height (read-line f))
 )

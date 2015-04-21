@@ -34,5 +34,9 @@ prisma
 33
 22
 
+konus
+70
+80
+
 end
 
