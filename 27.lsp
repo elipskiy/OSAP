@@ -1,23 +1,25 @@
 (defun c:OSAP()
-  (setq action nil file nil)
+  (setq file nil)
 
-  (initget 1 "Open Skip Exit")
-  (setq action (getkword "Select an action [Open file/Skip/Exit]\n"))
+  (OStartDialog)
+)
+
+(defun OStartDialog()
+  (setq action nil)
+
+  ; TODO: show skip when a file has been selected
+  (initget 1 "Open Color Skip Exit")
+  (setq action (getkword "Select an action [Open file/Color/Skip/Exit]\n"))
 
   (cond
     ((= action "Open") (progn
       (setq file (openFile))
       (ODialog)
     ))
+    ((= action "Color") (OColorDialog))
     ((= action "Skip") (ODialog))
     ((= action "Exit") (exit))
   )
-)
-
-(defun openFile()
-  (setq file nil)
-
-  (setq file (getfiled "Open file" "" "txt" 0))
 )
 
 (defun ODialog()
@@ -29,6 +31,19 @@
     ((= t "2d") (2dPart))
     ((= t "3d") (3dPart))
   )
+)
+
+(defun OColorDialog()
+  (initdia)
+  (command "color")
+
+  (OStartDialog)
+)
+
+(defun openFile()
+  (setq file nil)
+
+  (setq file (getfiled "Open file" "" "txt" 0))
 )
 
 (defun skipExtraLine(part f)
@@ -53,9 +68,12 @@
     ((= part "Duga") (command "arc" (setq startPoint (getpoint)) "E" (duga) "A" angle))
     ; Start point, end point, distance
     ((= part "Ellipse") (command "ellipse" (setq startPoint (getpoint)) (ellipse) distance))
+    ;
+    ; ((= part "Poliliniya") (command "pline" (setq startPoint (getpoint)) (poliliniya)))
   )
 
   (close f)
+  (OStartDialog)
 )
 
 (defun duga()
@@ -71,6 +89,10 @@
 
   (mapcar '+ startPoint relPoint)
 )
+
+; (defun poliliniya()
+
+; )
 
 (defun 3dPart()
   (setq part nil)
