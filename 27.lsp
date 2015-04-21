@@ -121,4 +121,22 @@
   (initget 1 "Tor Prisma Konus Shar")
   (setq part (getkword "Select a figure [Tor/Prisma/Konus/Shar]\n"))
 
+  (setq f (open file "r"))
+  (skipExtraLine part f)
+
+  (cond
+    ; Center point, radius, tube radius
+    ((= part "Tor") (progn
+      (tor)
+      (command "torus" (getpoint) radius tubeRadius))
+    )
+  )
+
+  (close f)
+  (OStartDialog)
+)
+
+(defun tor()
+  (setq radius (read-line f))
+  (setq tubeRadius (read-line f))
 )

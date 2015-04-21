@@ -22,8 +22,11 @@ poliliniya
 -6
 -4
 
-
 pyatiugol'nik
+18
+
+tor
+43
 18
 
 end
