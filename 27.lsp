@@ -97,12 +97,18 @@
   (setq lX nil lY nil prevPoint startPoint)
 
   (while (and (and (/= lX "") (/= lX "end")) (and (/= lY "") (/= lY "end")))
-    (setq lX (read-line f) lY (read-line f))
-    (setq relPoint (list (atof lX) (atof lY)))
-    (setq newPoint (mapcar '+ prevPoint relPoint))
+    (setq lX (read-line f))
+    (if (or (or (= lX "A") (= lX "S")) (= lX "L")) (progn
+      (command lX)
+      (setq lY T)
+    ) (progn
+      (setq lY (read-line f))
+      (setq relPoint (list (atof lX) (atof lY)))
+      (setq newPoint (mapcar '+ prevPoint relPoint))
 
-    (command newPoint)
-    (setq prevPoint newPoint)
+      (command newPoint)
+      (setq prevPoint newPoint)
+    ))
   )
   (command "")
 )

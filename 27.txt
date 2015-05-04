@@ -1,4 +1,4 @@
-abracadabra 
+abracadabra
 
 test
 
@@ -13,14 +13,16 @@ ellipse
 3
 
 poliliniya
-10
-13
-2
-9
--2
-4
--6
--4
+A
+S
+25
+25
+25
+-25
+L
+-50
+0
+
 
 pyatiugol'nik
 18
